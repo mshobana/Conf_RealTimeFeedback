@@ -19,9 +19,18 @@ var io = socket.listen(server);
 
 io.sockets.on('connection', function(client){
 	console.log("client connected");
-	// client.on('join', function(name){
-	// 	client.set('name', name);
-	// })
+
+	client.on('join', function(name){
+	  client.set('name', name);
+	  console.log(name + " has joined");
+    })
+
+    client.on('feedback', function(feedback){
+		client.get('name', function(err, name){
+			console.log(name + " said: " + feedback)
+			client.broadcast.emit('feedback', name, feedback);
+		})
+    });
 });
 
 app.get('/', function(request, response){
