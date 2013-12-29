@@ -1,0 +1,14 @@
+{
+	"name" : "real_time_feedback",
+	"description" : "Real time feedback web app for various tracks/Sessions in Conference",
+	"version" : "1",
+	"author" :{
+	 "name" : "Shobana",
+	 "email" : "shobi.oct@gmail.com"
+ 	},
+ 	"dependencies" : {
+ 		"express" : "~3.4.7",
+ 		"socket.io" : "~0.9.16",
+ 		"ejs" : "~0.8.5"
+ 	}
+}
