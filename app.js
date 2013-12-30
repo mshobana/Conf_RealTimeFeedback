@@ -37,6 +37,11 @@ app.get('/', function(request, response){
  	response.render('index.html');
 	console.log("Entered home page");
   	response.end();
-
 });
+
+app.get('/talks/:id', function(request, response){
+    response.write("Talk1 loaded");
+    response.end();
+});
+
 server.listen(8000);

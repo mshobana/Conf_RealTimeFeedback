@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script src="/static/scripts/3rdparty/jquery-1.10.2.js"></script>
 
-	<title>Feedback</title>
+  <title>Feedback</title>
+
 </head>
 <body>
+
+<ul id="talks"></ul>
 <textarea id="summary" readonly="readonly" style="width:600px ; height:300px ; display:block"></textarea>
 <input type="text" id="feedback"></input>
 <input type="button" value="Enter" id="feedbackSubmit"></input>
 
-<script>
-   var server = io.connect("http://localhost:8000");
-
-   server.on('connect', function(data){
-    var userName = prompt("Enter your name please!", null);
-    server.emit("join", userName);
-   });
-
-   var appendFeedback = function(name, feedback){
-      $('#summary').val($('#summary').val() + "\n" + name + " : " +feedback);
-   }
-
-   $('#feedbackSubmit').click(function(){
-    var feedback = $('#feedback').val();
-
-    server.emit("feedback", feedback);
-    appendFeedback("Me", feedback);
-    $('#feedback').val("");
-   });
-
-   server.on('feedback', function(name, feedback){
-    appendFeedback(name, feedback);
-   });
-</script>
 </body>
+
+<script type="text/javascript" src="/static/scripts/3rdparty/socket.io.js"></script>
+<script type="text/javascript" src="/static/scripts/3rdparty/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/static/scripts/feedback.js"></script>
+<script type="text/javascript" src="/static/scripts/talks.js"></script>
+<script type="text/javascript" src="/static/scripts/homepage.js"></script>
+
 </html>
