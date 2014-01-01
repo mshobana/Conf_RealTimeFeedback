@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var socket = require('socket.io');
 var ejs = require('ejs');
+var mongodb = require('mongodb').MongoClient;
 
 var app = express();
 
@@ -40,8 +41,30 @@ app.get('/', function(request, response){
 });
 
 app.get('/talks/:id', function(request, response){
-    response.write("Talk1 loaded");
-    response.end();
+	mongodb.connect('mongodb://localhost:27017/feedback', function(err, db) {
+		if(err){
+				console.log(err);
+			response.send(404);
+		}
+
+		console.log("Connected to Feedback db...");
+
+		db.collection('talks').find({"id" : request.params.id}).toArray(function(err, talks){
+			if(err){
+				console.log(err);
+				response.send(404);
+			}
+
+			console.log("Searching talk with the id : " + request.params.id);
+
+			if(talks!=null && talks.length > 0){
+				response.json(JSON.stringify(talks[0]));
+			}
+			else{
+				response.send(404);
+			}
+		});
+   });
 });
 
 server.listen(8000);
