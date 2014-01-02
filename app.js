@@ -70,8 +70,7 @@ app.get('/talks/:id', function(request, response){
 
 		console.log("Connected to Feedback db...");
 
-		//TODO : Replace find with findOne
-		db.collection('talks').find({"id" : request.params.id}).toArray(function(err, talks){
+		db.collection('talks').findOne({"id" : request.params.id}, function(err, talk){
 			if(err){
 				console.log(err);
 				response.send(404);
@@ -79,8 +78,8 @@ app.get('/talks/:id', function(request, response){
 
 			console.log("Searching talk with the id : " + request.params.id);
 
-			if(talks!=null && talks.length > 0){
-				response.json(JSON.stringify(talks[0]));
+			if(talk!=null){
+				response.json(JSON.stringify(talk));
 			}
 			else{
 				response.send(404);
