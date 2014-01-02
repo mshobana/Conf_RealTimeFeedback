@@ -7,7 +7,7 @@ var clearFeedbackWindow = function(){
 }
 
 var populateFeedbackWindowWith = function(feedbackList){
-	for (var feedback in feedbackList){
+	$.each(feedbackList, function(index,feedback){
 		appendFeedback(feedback.name, feedback.message);
-	}
+	});
 }

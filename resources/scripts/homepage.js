@@ -9,8 +9,7 @@ server.on('feedback', function(name, feedback){
    appendFeedback(name, feedback);
 });
 
-var talksList = GetTalks();
-AddTalks(talksList);
+RenderTalkLinks();
 
 $('#feedbackSubmit').click(function(){
    var feedback = $('#feedback').val();
