@@ -40,6 +40,27 @@ app.get('/', function(request, response){
   	response.end();
 });
 
+app.get('/alltalks', function(request, response){
+	mongodb.connect('mongodb://localhost:27017/feedback', function(err, db){
+		if(err){
+			console.log(err);
+			response.send(404);
+		}
+		console.log("Connected to Feedback db...");
+
+		//TODO : Avoid The usage of toArray function
+		db.collection('talks').find().toArray(function(err, allTalks){
+			if(err){
+				console.log(err);
+				response.send(404);
+			}
+
+			if(allTalks!=null && allTalks.length > 0){
+				response.json(JSON.stringify(allTalks));
+			}
+		});
+	})
+});
 app.get('/talks/:id', function(request, response){
 	mongodb.connect('mongodb://localhost:27017/feedback', function(err, db) {
 		if(err){
@@ -49,6 +70,7 @@ app.get('/talks/:id', function(request, response){
 
 		console.log("Connected to Feedback db...");
 
+		//TODO : Replace find with findOne
 		db.collection('talks').find({"id" : request.params.id}).toArray(function(err, talks){
 			if(err){
 				console.log(err);

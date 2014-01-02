@@ -1,10 +1,9 @@
 var RenderTalkLinks = function(){
-  	var talksList = [{id : 1, name : "talk1"}, {id : 2, name : "talk2"}];
-    AddTalks(talksList);
-    // $.get("/alltalks", function(talks){
-    // 	var talksList = jQuery.parseJSON(talks);
-    // 	AddTalks(talksList);
-    // });
+    $.get("/alltalks", function(talks){
+		var talksList = jQuery.parseJSON(talks);
+		AddTalks(talksList);
+		bindTalkSelectEvent();
+	});
 }
 
 var AddTalks = function(talks){ 
@@ -13,7 +12,7 @@ var AddTalks = function(talks){
     });
 }
 
-$(document).ready(function(){
+var bindTalkSelectEvent = function(){
 	$('.talk').click(function(event){
 		event.preventDefault();
 		var talkId = event.currentTarget.id;
@@ -23,4 +22,4 @@ $(document).ready(function(){
 			populateFeedbackWindowWith(talk.feedback);
 		});
 	});
-});
+}
