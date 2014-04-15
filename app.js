@@ -29,7 +29,7 @@ io.sockets.on('connection', function(client){
     client.on('feedback', function(feedback){
 		client.get('name', function(err, name){
 			console.log(name + " said: " + feedback)
-			client.broadcast.emit('feedback', name, feedback);
+			client.broadcast.emit('feedbackByOthers', name, feedback);
 		})
     });
 });
@@ -64,7 +64,7 @@ app.get('/alltalks', function(request, response){
 app.get('/talks/:id', function(request, response){
 	mongodb.connect('mongodb://localhost:27017/feedback', function(err, db) {
 		if(err){
-				console.log(err);
+				console.log("Error in Mongodb connection : " + err);
 			response.send(404);
 		}
 
@@ -72,7 +72,7 @@ app.get('/talks/:id', function(request, response){
 
 		db.collection('talks').findOne({"id" : request.params.id}, function(err, talk){
 			if(err){
-				console.log(err);
+				console.log("Error in Mongodb Collection talks : " + err);
 				response.send(404);
 			}
 

@@ -19,7 +19,7 @@ var bindTalkSelectEvent = function(){
 		$.get("/talks/" + talkId,function(talkJson){
 			var talk = jQuery.parseJSON(talkJson);
 			clearFeedbackWindow();
-			populateFeedbackWindowWith(talk.feedback);
+			populateFeedbackWindowWith(talk.feedbacks);
 		});
 	});
 }

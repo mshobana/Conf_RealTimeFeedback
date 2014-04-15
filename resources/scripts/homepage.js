@@ -5,7 +5,7 @@ server.on('connect', function(data){
    server.emit("join", userName);
 });
 
-server.on('feedback', function(name, feedback){
+server.on('feedbackByOthers', function(name, feedback){
    appendFeedback(name, feedback);
 });
 
