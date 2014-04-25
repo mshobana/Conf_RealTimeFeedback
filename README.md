@@ -10,17 +10,17 @@ DEV MACHINE SETUP:
 
 2.Install mongodb
 
-3.Clone the repo (Run 'git clone git@github.com:MShobana/Conf_RealTimeFeedback.git')
+3.Clone the repo (Run ```git clone git@github.com:MShobana/Conf_RealTimeFeedback.git```)
 
-4.Run 'mongod'
+4.Run ```mongod```
 
 5.Go to git folder
 
-6.Run 'npm install'
+6.Run ```npm install```
 
-7.Run 'node app.js'
+7.Run ```node app.js```
 
-8.Hit 'localhost:8000' in browser and the you should see the app running.
+8.Hit ```localhost:8000``` in browser and the you should see the app running.
 
 Mongo db structure:
 ===================
