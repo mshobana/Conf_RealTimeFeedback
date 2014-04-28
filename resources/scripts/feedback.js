@@ -1,5 +1,8 @@
 var appendFeedback = function(name, feedback){
-    $('#summary').val($('#summary').val() + "\n" + name + " : " + feedback);
+	feedback = feedback || '';
+	feedback = feedback.replace('\n', '<br/>')
+    $('#summary').html( $('#summary').html() + '<br>' + name + ' : ' + feedback );
+    $('#summary').scrollTop( $('#summary')[0].scrollHeight );
 }
 
 var clearFeedbackWindow = function(){

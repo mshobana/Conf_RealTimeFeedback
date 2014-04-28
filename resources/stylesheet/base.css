@@ -1,0 +1,57 @@
+/* basic reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+/* styles */
+.summary-wrapper {
+	display: block;
+	position: absolute;
+	top:0; left:0; right:0; bottom:60px;
+	overflow: none;
+}
+
+.summary {
+	overflow: auto;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	max-height: 200px;
+}
+
+#feedback-form {
+	display: block;
+	position: fixed;
+	height: 60px;
+	width: 100%;
+	left:0; right:0; bottom:0;
+}
+
+#feedback-text-wrapper {
+	background: #644;
+	position: absolute;
+	left: 0px;
+	right: 60px;
+	height: 100%;
+}
+
+#feedback-text {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#feedbackSubmit {
+	display: block;
+	position: absolute;
+	width: 60px;
+	right: 0px;
+	height: 100%;
+}

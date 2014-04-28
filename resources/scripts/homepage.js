@@ -1,8 +1,8 @@
 RenderTalkLinks();
 
 $('#feedbackSubmit').click(function(){
-   var feedback = $('#feedback').val();
+   var feedback = $('#feedback-text').val();
    server.emit("feedback", feedback);
    appendFeedback("Me", feedback);
-   $('#feedback').val("");
+   $('#feedback-text').val("");
 });

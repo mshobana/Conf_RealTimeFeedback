@@ -4,13 +4,21 @@
 
   <title>Feedback</title>
 
+<link rel="stylesheet" href="/static/stylesheet/base.css">
 </head>
 <body>
 
   <ul id="talks"></ul>
-  <textarea id="summary" readonly="readonly" style="width:600px ; height:300px ; display:block"></textarea>
-  <input type="text" id="feedback"></input>
-  <input type="button" value="Enter" id="feedbackSubmit"></input>
+  <div class="summary-wrapper">
+    <div id="summary" class="summary"></div>
+  </div>
+
+  <div id="feedback-form">
+    <div id="feedback-text-wrapper">
+      <input type="text" id="feedback-text"></input>
+    </div>
+    <button id="feedbackSubmit">Enter</button>
+  </div>
 
 </body>
 
